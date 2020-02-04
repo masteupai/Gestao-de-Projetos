@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="eed79b4933a24e078575ec768b9a36b4" Name="Diagram1">
+        <EntityTypeShape EntityType="ModelProjetos.Atividade" Width="1.5" PointX="8" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelProjetos.Cliente" Width="1.5" PointX="2" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelProjetos.Colaborador" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelProjetos.ProjetosColaborador" Width="1.5" PointX="5.375" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelProjetos.CadProjeto" Width="1.5" PointX="5.625" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelProjetos.Skill" Width="1.5" PointX="3.125" PointY="0.625" IsExpanded="true" />
+        <AssociationConnector Association="ModelProjetos.TB_ATIVIDADES_FK_IDPROJ_COLAB" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelProjetos.TB_PROJETOS_FK_IDCLIENTE" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelProjetos.TB_PROJCOLAB_FK_IDPROJETO" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelProjetos.TB_COLABORADORES_FK_IDSKILL" />
+        <AssociationConnector Association="ModelProjetos.TB_PROJCOLAB_FK_IDCOLABORADOR" />
+        <AssociationConnector Association="ModelProjetos.TB_PROJCOLAB_FK_IDSKILL" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,52 @@
+﻿@model Projeto.GestaoProjetos.ViewModel.ProjetoValoresViewModel
+
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumHorasProj)
+        </dt>
+
+        <dd class="text-info">
+            @Model.NumHorasProj
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.HorasRestantes)
+        </dt>
+
+        <dd class="text-info">
+            @Model.HorasRestantes
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.HorasTrabalhadas)
+        </dt>
+
+        <dd class="text-info">
+            @Model.HorasTrabalhadas
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ValorColaborador)
+        </dt>
+
+        <dd class="text-success">
+            @string.Format("{0:C}", Model.ValorColaborador)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ValorPagoColaboradores)
+        </dt>
+
+        <dd class="text-danger">
+            @string.Format("{0:C}", Model.ValorPagoColaboradores)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ValorPedidoColaboradores)
+        </dt>
+
+        <dd class="text-success">
+            @string.Format("{0:C}", Model.ValorPedidoColaboradores)
+        </dd>
+
+    </dl>
+
+

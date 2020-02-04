@@ -1,0 +1,90 @@
+﻿@using Projeto.GestaoProjetos.Models
+@using Projeto.GestaoProjetos.ViewModel
+@model Colaborador
+@{
+    ViewBag.Title = "Index";
+    ViewBag.Title = "Incluir Colaborador";
+    List<Colaborador> colaboradores = ViewBag.Colaboradores;
+    var listaskills = (List<SkillsViewModel>)ViewBag.ListaSkills;
+}
+
+    <div id="fundocolab">
+        @*<h2 class="text-center">Gestão de Colaboradores</h2>
+        <br />
+
+        <div class="container ">
+            <ul class="nav navbar-nav">
+                <li style="margin:3px;">
+                    @Html.ActionLink("Cadastrar Colaborador", "IncluirColaborador", new { }, new { @class = "btn btn-info btn-lg" })
+                    <br />
+
+                </li>
+                <li style="margin:3px;">
+                    @Html.ActionLink("Cadastrar Skill", "IncluirSkills", new { }, new { @class = "btn btn-info btn-lg" })
+                    <br />
+
+                </li>
+                <li style="margin:3px;">
+                    @Html.ActionLink("Lista de Skills", "ListarSkills", new { }, new { @class = "btn btn-info btn-lg" })
+                    <br />
+
+                </li>
+            </ul>
+        </div>*@
+
+   
+
+
+        <h2 class="text-center">Lista de Colaboradores</h2>
+        <br />
+        <div class="tables-overflow">
+            <table class="table table-bordered tables">
+                <tr >              
+                    <th>
+                        @Html.DisplayNameFor(model => model.Nome)
+                    </th>                   
+                    <th>
+                        @Html.DisplayNameFor(model => model.ValorHora)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IDSKILL)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Status)
+                    </th>
+                    <th>Opções:</th>                
+                </tr>
+                @foreach (var item in colaboradores)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nome)
+                        </td>                      
+                   
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ValorHora)
+                        </td>
+                        <td>
+                            @listaskills.FirstOrDefault(s => s.IdSkill == item.IDSKILL).Descricao
+                        </td>
+                        <td>
+                            @if (item.Status == 1)
+                            {
+                                <span>Ativo</span>
+                            }
+                            else
+                            {
+                                <span>Inativo</span>
+                            }
+                        </td>
+                        <td>
+                            @Html.ActionLink(" ", "AlterarColaborador", new { id = item.IDCOLABORADOR, }, new { @class = "btn btn-warning glyphicon glyphicon-wrench", style = "color:000; margin-right:10px;", title = "Alterar" })
+                            @Html.ActionLink(" ", "DetalhesColaborador", new { id = item.IDCOLABORADOR }, new { @class = "btn btn-info glyphicon glyphicon-search", style = "color:000; margin-right:10px;", title = "Detalhes" })
+
+                        </td>
+                    </tr>
+                }
+        </table>
+        </div>
+
+    </div>

@@ -1,0 +1,257 @@
+﻿
+#corpo {
+    background: rgb(255,255,255);
+    background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(165,173,190,1) 100%);
+    border-color: dimgray;
+    border-top: none;
+    border-radius: 0 0px 30px 30px;
+}
+
+
+* {
+    font-family: Andale Mono, monospace;
+}
+
+.dropnav.active > a {
+    background: none !important;
+}
+
+.dropnav:link, .dropnav:visited, .dropnav:active {
+    background: black !important;
+    transition: 0.9s;
+    stop-color: Background;
+    transition: 0.7s;
+}
+
+.dropnav.active > a:after {
+    background: #bac4ff !important;
+}
+
+.dropnav .dropdown-menu > li > a {
+    background: #bac4ff !important;
+}
+
+.dropnav .dropdown-menu {
+    background: #bac4ff !important;
+}
+
+.text-success {
+    color: #047210 !important;
+}
+.text-info{
+    color: #102053 !important;
+}
+    .dropnav .dropdown-menu > li > a:hover {
+        background: #adb9ff !important;
+    }
+
+#corpologin {
+    background: rgb(255,255,255);
+    background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(165,173,190,1) 100%);
+    border-color: dimgray;
+    border-top: none;
+    border-radius: 30px;
+    width: 92%;
+}
+
+#layoutLogin {
+    background: #213349;
+}
+
+.layoutLogin {
+    position: center;
+    background: rgb(255,255,255);
+    background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(165,173,190,1) 100%);
+}
+
+#login {
+    background-image: url("~/Images/undraw_mobile_interface_wakp.svg")
+}
+
+#navigation {
+    background: rgb(255,255,255);
+    background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(165,173,190,1) 100%);
+    width: 100%;
+}
+
+.login {
+    margin-right: 80px;
+}
+
+#body {
+    background: rgb(34,24,57);
+    background: linear-gradient(90deg, rgba(34,24,57,1) 0%, rgba(32,59,103,1) 50%, rgba(34,24,57,1) 100%);
+}
+
+.bar {
+    max-height: 450px;
+    overflow-y: auto;
+}
+
+
+.navigation > ul > li > a {
+    color: #23262b !important;
+}
+
+.navigation > a {
+    color: #23262b !important;
+}
+
+.navbar-fixed-top {
+    border: none;
+}
+
+.navigation > ul > li > a:hover {
+    color: gray !important;
+    background-color: #a6abb3 !important;
+    transition: 0.7s;
+}
+
+.navigation > a:hover {
+    color: gray !important;
+    background: #a6abb3 !important;
+    transition: 0.7s;
+}
+
+.tables {
+    /*background: #94a7c6;*/
+    background: #a6a3cb;
+    position: relative;
+    border-radius: 7px;
+    border: 2px solid #36475b !important;
+}
+
+.btn-info {
+    background: #3c6088 !important;
+    border: #3c6088;
+}
+
+    .btn-info:hover {
+        background: #598bc2 !important;
+        transition: 0.7s;
+    }
+
+.tables .btn-info:hover {
+    background: #598bc2 !important;
+    transition: 0.7s;
+    font-size: 92%;
+}
+
+
+.btn-success {
+    background: #40be5b !important;
+    border: #40be5b;
+}
+
+    .btn-success:hover {
+        background: #6fe286 !important;
+        transition: 0.7s;
+    }
+
+.tables .btn-success:hover {
+    background: #6fe286 !important;
+    transition: 0.7s;
+    font-size: 92%;
+}
+
+.btn-primary {
+    background: #5c56b9 !important;
+    border: #5c56b9;
+}
+
+    .btn-primary:hover {
+        background: #8c66cf !important;
+        transition: 0.7s;
+    }
+
+.tables .btn-primary:hover {
+    background: #8c66cf !important;
+    transition: 0.7s;
+    font-size: 92%;
+}
+
+
+
+
+
+.btn-warning {
+    background: #ffac3f !important;
+    border: #ffac3f;
+}
+
+    .btn-warning:hover {
+        background: #f0b260 !important;
+        transition: 0.7s;
+    }
+
+
+.tables .btn-warning:hover {
+    background: #f0b260 !important;
+    transition: 0.7s;
+    font-size: 92%;
+}
+
+
+.btn-danger {
+    background: #d01f2e !important;
+    border: #ffac3f;
+}
+
+    .btn-danger:hover {
+        background: #c44040 !important;
+        transition: 0.7s;
+    }
+
+
+.tables .btn-danger:hover {
+    background: #c44040 !important;
+    transition: 0.7s;
+    font-size: 92%;
+}
+/*#f78eb4*/
+
+
+
+
+
+.tables > tbody > tr > td, .tables > tbody > tr > th {
+    border: 1px solid #0a2f5b;
+    border-top: none;
+    text-align: center;
+}
+
+.tables > tbody > tr:hover {
+    /*background: #aec1df;*/
+    background: #c5b6e9;
+}
+
+
+#corpoproj > #imgprojeto {
+    max-height: 400px;
+    max-width: 130px;
+}
+
+.tables-overflow {
+    max-height: 400px;
+    width: auto;
+    overflow-y: auto;
+}
+
+.tables > tbody > th {
+    position: absolute;
+}
+
+
+fieldset.fild-borda {
+    border: 1px solid #6f6877 !important;
+    padding: 0 1.4em 1.4em 1.4em !important;
+    margin: 0 0 1.5em 0 !important;
+}
+
+legend.fild-borda {
+    font-size: 20px !important;   
+    text-align: left !important;
+    width: auto;
+    padding: 0 10px;
+    border-bottom: none !important;
+}

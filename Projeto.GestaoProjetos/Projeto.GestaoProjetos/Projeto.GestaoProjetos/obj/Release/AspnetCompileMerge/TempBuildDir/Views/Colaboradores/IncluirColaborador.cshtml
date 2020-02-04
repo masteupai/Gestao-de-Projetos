@@ -1,0 +1,157 @@
+﻿@using Projeto.GestaoProjetos.Models
+@using Projeto.GestaoProjetos.ViewModel
+@model Colaborador
+@{
+
+    ViewBag.Title = "Incluir Colaborador";
+    List<Colaborador> colaboradores = ViewBag.Colaboradores;
+    var listaskills = (List<SkillsViewModel>)ViewBag.ListaSkills;
+
+}
+<div class="col-md-12 fild-borda" style="border:none !important;">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <fieldset class="form-horizontal fild-borda">
+            <legend class="fild-borda">Cadastrar Colaborador</legend>
+            <div class="control-label col-md-6 text-left">
+
+
+                <div class="form-group text-left">
+                    @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group text-left">
+                    @Html.LabelFor(model => model.Tipo, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.Tipo, (SelectList)ViewBag.TiposPessoa, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Tipo, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group text-left">
+                    @Html.LabelFor(model => model.Documento, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Documento, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Documento, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group text-left">
+                    @Html.LabelFor(model => model.IDSKILL, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.IDSKILL, (SelectList)ViewBag.Skills, "SELECIONE", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.IDSKILL, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group text-left">
+                    @Html.LabelFor(model => model.ValorHora, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ValorHora, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ValorHora, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group text-left">
+                    @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.Status, (SelectList)ViewBag.TiposStatus, new { @class = "form-control" })
+
+                        @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="control-label col-md-6">
+                <div class="form-group text-left">
+                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                <div class="form-group text-left">
+                    @Html.LabelFor(model => model.Telefone, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Telefone, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ValorHora, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Salvar" class="btn btn-success" />
+                @Html.ActionLink("Voltar", "Index", "Colaboradores", new { @class = "btn btn-info" })
+            </div>
+
+        </fieldset>
+    }
+
+    <h2 class="text-center">Lista de Colaboradores</h2>
+    <br />
+    @if (colaboradores.Count() > 0)
+    {
+        <table class="table table-bordered tables">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nome)
+                </th>
+                @*<th>
+                        @Html.DisplayNameFor(model => model.Documento)
+                    </th>*@
+                <th>
+                    @Html.DisplayNameFor(model => model.ValorHora)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IDSKILL)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Status)
+                </th>
+                <th>Opções:</th>
+            </tr>
+
+            @foreach (var item in colaboradores)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nome)
+                    </td>
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.Documento)
+                        </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ValorHora)
+                    </td>
+                    <td>
+                        @listaskills.FirstOrDefault(s => s.IdSkill == item.IDSKILL).Descricao
+                    </td>
+                    <td>
+                        @if (item.Status == 1)
+                        {
+                            <span>Ativo</span>
+                        }
+                        else
+                        {
+                            <span>Inativo</span>
+                        }
+                    </td>
+                    <td>
+                        @Html.ActionLink(" ", "AlterarColaborador", new { id = item.IDCOLABORADOR, }, new { @class = "btn btn-warning glyphicon glyphicon-wrench", style = "color:000; margin-right:10px;", title = "Alterar" })
+                        @Html.ActionLink(" ", "DetalhesColaborador", new { id = item.IDCOLABORADOR }, new { @class = "btn btn-info glyphicon glyphicon-search", style = "color:000; margin-right:10px;", title = "Detalhes" })
+
+                    </td>
+                </tr>
+            }
+
+        </table>
+    }
+    else
+    {
+        <span class="col-md-12 alert alert-danger">Não há Colaboradores cadastrados</span>
+    }
+</div>

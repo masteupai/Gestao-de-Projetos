@@ -1,0 +1,111 @@
+﻿@using Projeto.GestaoProjetos.Models
+@using Projeto.GestaoProjetos.ViewModel
+@model Atividade
+
+@{
+    ViewBag.Title = "Ponto Colaborador";
+    var colab = (ColaboradorProjetoViewModel)ViewBag.Colab;
+    var colaborador = (Colaborador)ViewBag.Colaborador;
+    var listaAtivdade = (List<Atividade>)ViewBag.Lista;
+    var atividade = listaAtivdade.Count();
+
+}
+    <h2 class="text-center">Pontos do Colaborador  -   @Html.Label(colaborador.Nome)</h2>
+  
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    @Html.HiddenFor(model => model.IDPROJ_COLAB)
+<div class="form-horizontal">
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    @Html.Label(colab.Descricao, new { @class = "form-control text-center" })
+    <br />
+    <div class="form-group">
+        @Html.LabelFor(model => model.HoraInicio, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.HoraInicio, new { htmlAttributes = new { @class = "form-control"} })
+            @Html.ValidationMessageFor(model => model.HoraInicio, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.HoraFim, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.HoraFim, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.HoraFim, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    @*<div class="form-group">
+            @Html.LabelFor(model => model.IDPROJ_COLAB, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.IDPROJ_COLAB, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.IDPROJ_COLAB, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Marcar Ponto" class="btn btn-success" />
+        </div>
+    </div>
+</div>
+}
+
+
+
+
+<h3 class="text-center">Pontos recentes deste colaborador</h3>
+
+<hr />
+@if (atividade == 0)
+{
+    <h2 class="alert alert-warning">Não há atividades registradas</h2>
+    <br />
+    <br />
+}
+else
+{
+    <table class="table table-bordered tables" >
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IDATIVIDADE)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HoraInicio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HoraFim)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IDPROJ_COLAB)
+            </th>
+
+        </tr>
+
+        @foreach (var item in listaAtivdade)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IDATIVIDADE)
+                </td>
+                <td>
+                    @string.Format("{0:dd/MM/yyyy HH:mm}", item.HoraInicio)
+                </td>
+                <td>
+                    @string.Format("{0:dd/MM/yyyy HH:mm}", item.HoraFim)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IDPROJ_COLAB)
+                </td>
+
+            </tr>
+        }
+    </table>
+
+}
+    @Html.ActionLink("Voltar", "Index", "Colaboradores", new { }, new { @class = "btn btn-info" })

@@ -1,0 +1,84 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="A760CB78-423B-2AA4-BE01-CA98306D7F70" name="TBColaboradores">
+<createdBy>matheus.andrade</createdBy>
+<createdTime>2019-11-08 16:46:11 UTC</createdTime>
+<ownerDesignName>DiagramaBancoProjetoMttechne</ownerDesignName>
+<engineerTo>
+<item key="1684C716-9A8E-AC67-B99D-4FE326F112DA" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="IdColaborador" id="234B1D9A-1791-AC52-974A-33FEA355CBE0">
+<createdBy>matheus.andrade</createdBy>
+<createdTime>2019-11-08 16:46:25 UTC</createdTime>
+<ownerDesignName>DiagramaBancoProjetoMttechne</ownerDesignName>
+<engineerTo>
+<item key="1684C716-9A8E-AC67-B99D-4FE326F112DA" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Nome" id="17326D24-8277-7C2D-1265-2EB0D93E5BDC">
+<createdBy>matheus.andrade</createdBy>
+<createdTime>2019-11-08 16:46:44 UTC</createdTime>
+<ownerDesignName>DiagramaBancoProjetoMttechne</ownerDesignName>
+<engineerTo>
+<item key="1684C716-9A8E-AC67-B99D-4FE326F112DA" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="CNPJ/CPF" id="AA21819F-4245-F258-2BF1-B518FF48161A">
+<createdBy>matheus.andrade</createdBy>
+<createdTime>2019-11-08 16:46:59 UTC</createdTime>
+<ownerDesignName>DiagramaBancoProjetoMttechne</ownerDesignName>
+<engineerTo>
+<item key="1684C716-9A8E-AC67-B99D-4FE326F112DA" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="ValorHora" id="5CC9FF10-90C5-D254-FFE4-1522C2099D0E">
+<createdBy>matheus.andrade</createdBy>
+<createdTime>2019-11-12 17:02:41 UTC</createdTime>
+<ownerDesignName>DiagramaBancoProjetoMttechne</ownerDesignName>
+<engineerTo>
+<item key="1684C716-9A8E-AC67-B99D-4FE326F112DA" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="4C1901A7-4F2A-B539-6A81-75AE9C0B8B78" name="TBColaboradores PK">
+<createdBy>matheus.andrade</createdBy>
+<createdTime>2019-11-08 17:16:26 UTC</createdTime>
+<ownerDesignName>DiagramaBancoProjetoMttechne</ownerDesignName>
+<engineerTo>
+<item key="1684C716-9A8E-AC67-B99D-4FE326F112DA" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>234B1D9A-1791-AC52-974A-33FEA355CBE0</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

@@ -1,0 +1,76 @@
+﻿@model Projeto.GestaoProjetos.Models.ProjetosColaborador
+
+@{
+    ViewBag.Title = "Incluir Colaborador Projeto";
+
+}
+@using (Html.BeginForm())
+{
+    <div class="col-md-12 fild-borda" style="border:none !important;">
+        <fieldset class="fild-borda">
+            <legend class="fild-borda">Incluir Colaborador em Projeto</legend>
+
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.IDPROJETO, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.IDPROJETO, (SelectList)ViewBag.Projetos, new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.IDCOLABORADOR, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.IDCOLABORADOR, (SelectList)ViewBag.Colaboradores, "Selecione", new { @class = "form-control", id = "idd" })
+                        @Html.ValidationMessageFor(model => model.IDCOLABORADOR, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div id="resultado"></div>
+                @*<div class="form-group">
+                        @Html.LabelFor(model => model.IDSKILL, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(model => model.IDSKILL, (SelectList)ViewBag.Skills, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.IDSKILL, "", new { @class = "text-danger" })
+                        </div>
+                    </div>*@
+                @*<div class="form-group">
+                        @Html.LabelFor(model => model.ValorHoraProjColab, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.ValorHoraProjColab, new { htmlAttributes = new { @class = "form-control", @id = "id" } })
+                            @Html.ValidationMessageFor(model => model.ValorHoraProjColab, "", new { @class = "text-danger" })
+                        </div>
+                    </div>*@
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Salvar" class="btn btn-success" />
+                        @Html.ActionLink("Voltar", "Index", "Projetos", new { @class = "btn btn-info" })
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+            }
+    @section Scripts{
+
+        <script>
+            $(document).ready(function () {
+                $("#idd").change(function () {
+                    //obtemos o valor do item selecionado
+                    var idd = $("#idd").val();
+                    if (idd != 0) {
+                        //apresentando resultado na div "resultado"
+                        $("#resultado").load("/Projetos/ListarSkillAjax/" + idd)
+                        $("#resultado").show()
+                    } else {
+                        $("#resultado").load("/Projetos/ListarSkillAjax/" + idd)
+                        $("#resultado").hide()
+                    }
+                });
+            });
+        </script>
+    }

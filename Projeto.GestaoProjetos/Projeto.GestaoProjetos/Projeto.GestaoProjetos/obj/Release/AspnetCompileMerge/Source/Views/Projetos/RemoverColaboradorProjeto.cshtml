@@ -1,0 +1,53 @@
+﻿@model Projeto.GestaoProjetos.Models.ProjetosColaborador
+
+@{
+    ViewBag.Title = "RemoverColaboradorProjeto";
+}
+
+<h3 class="alert alert-danger">Tem certeza que deseja desvincular este colaborador do @Model.Projeto.Descricao?</h3>
+<div>
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Projeto.Descricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Projeto.Descricao)
+        </dd>
+     
+        <dt>
+            @Html.DisplayNameFor(model => model.ValorHoraProjColab)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ValorHoraProjColab)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ColaboradorInfo.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ColaboradorInfo.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SkillInfo.Descricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SkillInfo.Descricao)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(c => c.IDPROJ_COLAB)
+        <div class="form-actions no-color">
+            <input type="submit" value="Remover" class="btn btn-danger" /> 
+            @Html.ActionLink("Não, Voltar para a lista", "Index", "Projetos", new {@class="btn btn-info" })
+        </div>
+    }
+</div>

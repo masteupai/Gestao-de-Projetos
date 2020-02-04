@@ -1,0 +1,93 @@
+﻿@model IEnumerable<Projeto.GestaoProjetos.Models.Cliente>
+
+@{
+    ViewBag.Title = "Clientes";
+}
+
+<div id="fundocliente">
+    @*<h2 class="text-center">Gestão de Clientes</h2>
+
+        <div class="container">
+            @Html.ActionLink("Cadastrar Cliente", "IncluirCliente", new { }, new { @class = "btn btn-info btn-lg" })
+        </div>*@
+
+
+
+    <h2 class="text-center">Lista de Clientes</h2>
+    <br />
+    @if (Model.Count() > 0)
+    {
+        <div class="tables-overflow">
+            <table class="table tables">
+
+                <tr>
+                    @*<th>
+                            @Html.DisplayNameFor(model => model.IDCLIENTE)
+                        </th>*@
+                    <th>
+                        @Html.DisplayNameFor(model => model.RazaoSocial)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Cnpj)
+                    </th>
+
+                    @*<th>
+                            @Html.DisplayNameFor(model => model.Telefone)
+                        </th>*@
+                    <th>
+                        @Html.DisplayNameFor(model => model.Endereco)
+                    </th>
+                    @*<th>
+                            @Html.DisplayNameFor(model => model.Complemento)
+                        </th>*@
+                    @*<th>
+                            @Html.DisplayNameFor(model => model.Email)
+                        </th>*@
+                    <th>
+                        @Html.DisplayNameFor(model => model.RamoAtividades)
+                    </th>
+                    <th><p>Opções:</p></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        @*<td>
+                                @Html.DisplayFor(modelItem => item.IDCLIENTE)
+                            </td>*@
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RazaoSocial)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Cnpj)
+                        </td>
+                        @*<td>
+                                @Html.DisplayFor(modelItem => item.Telefone)
+                            </td>*@
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Endereco)
+                        </td>
+                        @*<td>
+                                @Html.DisplayFor(modelItem => item.Complemento)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Email)
+                            </td>*@
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RamoAtividades)
+                        </td>
+                        <td>
+                            @Html.ActionLink(" ", "AlterarCliente", new { id = item.IDCLIENTE }, new { @class = "btn btn-warning glyphicon glyphicon-wrench", style = "color:000; margin:5px;", title = "Alterar" })
+                            @Html.ActionLink(" ", "ExcluirCliente", new { id = item.IDCLIENTE }, new { @class = "btn btn-danger glyphicon glyphicon-remove", style = "color:000; margin:5px;", title = "Excluir" })
+                            @Html.ActionLink(" ", "ListaDeProjetosCliente", new { id = item.IDCLIENTE }, new { @class = "btn btn-info glyphicon glyphicon-list", style = "color:000; margin:5px;", title = "Lista de Projetos" })
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    }
+    else
+    {
+        <span class="col-md-12 alert alert-danger">Não há Clientes cadastrados</span> 
+    }
+    </div>

@@ -1,0 +1,125 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="82D6DD19-7507-B6D1-5C5F-063100D4B9C7" name="TBClientes">
+<createdBy>matheus.andrade</createdBy>
+<createdTime>2019-11-08 16:22:24 UTC</createdTime>
+<ownerDesignName>DiagramaBancoProjetoMttechne</ownerDesignName>
+<engineerTo>
+<item key="1684C716-9A8E-AC67-B99D-4FE326F112DA" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="IdCliente" id="E06026DB-3991-2E23-35D6-B74DE9DDC022">
+<createdBy>matheus.andrade</createdBy>
+<createdTime>2019-11-08 16:33:11 UTC</createdTime>
+<ownerDesignName>DiagramaBancoProjetoMttechne</ownerDesignName>
+<engineerTo>
+<item key="1684C716-9A8E-AC67-B99D-4FE326F112DA" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Cnpj" id="149C72B7-0E64-61D8-DFED-7F2BC692B287">
+<createdBy>matheus.andrade</createdBy>
+<createdTime>2019-11-08 16:37:41 UTC</createdTime>
+<ownerDesignName>DiagramaBancoProjetoMttechne</ownerDesignName>
+<engineerTo>
+<item key="1684C716-9A8E-AC67-B99D-4FE326F112DA" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
+<dataTypeSize>14 CHAR</dataTypeSize>
+<ownDataTypeParameters>14 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="RazaoSocial" id="D8B6880A-5BA9-65A8-CFE2-18544BE7F2D4">
+<createdBy>matheus.andrade</createdBy>
+<createdTime>2019-11-08 16:38:02 UTC</createdTime>
+<ownerDesignName>DiagramaBancoProjetoMttechne</ownerDesignName>
+<engineerTo>
+<item key="1684C716-9A8E-AC67-B99D-4FE326F112DA" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
+<dataTypeSize>200 CHAR</dataTypeSize>
+<ownDataTypeParameters>200 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Telefone" id="C288BD92-6A51-5A19-9B05-78874BA64D41">
+<createdBy>matheus.andrade</createdBy>
+<createdTime>2019-11-11 16:33:19 UTC</createdTime>
+<ownerDesignName>DiagramaBancoProjetoMttechne</ownerDesignName>
+<engineerTo>
+<item key="1684C716-9A8E-AC67-B99D-4FE326F112DA" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Endereco" id="86309F16-0264-FB2B-886D-53D09864A8DA">
+<createdBy>matheus.andrade</createdBy>
+<createdTime>2019-11-11 16:33:29 UTC</createdTime>
+<ownerDesignName>DiagramaBancoProjetoMttechne</ownerDesignName>
+<engineerTo>
+<item key="1684C716-9A8E-AC67-B99D-4FE326F112DA" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Email" id="3F940CE2-D711-4EA2-0D5D-63BCD01B3817">
+<createdBy>matheus.andrade</createdBy>
+<createdTime>2019-11-11 16:33:39 UTC</createdTime>
+<ownerDesignName>DiagramaBancoProjetoMttechne</ownerDesignName>
+<engineerTo>
+<item key="1684C716-9A8E-AC67-B99D-4FE326F112DA" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Ramodeatividades" id="354FA9C3-3F5E-AFFD-D469-61B64CEF4277">
+<createdBy>matheus.andrade</createdBy>
+<createdTime>2019-11-14 16:19:37 UTC</createdTime>
+<ownerDesignName>DiagramaBancoProjetoMttechne</ownerDesignName>
+<engineerTo>
+<item key="1684C716-9A8E-AC67-B99D-4FE326F112DA" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="3C474B3B-49A4-5A70-A4BB-3F9EF543C8D4" name="TBClientes PK">
+<createdBy>matheus.andrade</createdBy>
+<createdTime>2019-11-08 17:05:51 UTC</createdTime>
+<ownerDesignName>DiagramaBancoProjetoMttechne</ownerDesignName>
+<engineerTo>
+<item key="1684C716-9A8E-AC67-B99D-4FE326F112DA" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>E06026DB-3991-2E23-35D6-B74DE9DDC022</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="ProjetoConnection-Web.config Connection String" description="ProjetoConnection Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/Models.ModelBanco.csdl|res://*/Models.ModelBanco.ssdl|res://*/Models.ModelBanco.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=.\SQLEXPRESS;initial catalog=DB_PROJETOS_MTTECHNE;persist security info=True;user id=sa;password=@senha123;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\GestaoProjetoMttechne\\Projeto\.GestaoProjetos\\Projeto\.GestaoProjetos\\Projeto\.GestaoProjetos\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='ProjetoConnection']/@connectionString" />
+  </parameter>
+  <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection Connection String used in web.config by the application to access the database." defaultValue="Password=@senha123;Persist Security Info=True;User ID=sa;Initial Catalog=DB_PROJETOSUSUARIOS;Data Source=.\SQLEXPRESS" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\GestaoProjetoMttechne\\Projeto\.GestaoProjetos\\Projeto\.GestaoProjetos\\Projeto\.GestaoProjetos\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+</parameters>

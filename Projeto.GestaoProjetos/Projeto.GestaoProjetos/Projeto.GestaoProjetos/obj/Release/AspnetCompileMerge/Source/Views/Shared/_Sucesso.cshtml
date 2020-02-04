@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "_Sucesso";
+}
+
+<h2 class="text-success">Operação Foi excutada com sucesso:</h2>
+<hr />
+<div class="alert alert-success">
+    @Html.Raw(ViewBag.MensagemSucesso)
+</div>
+<hr />
+<div>
+    @Html.ActionLink("Voltar", "Index", new { id = "id" }, new { @class = "btn btn-info" })
+</div>

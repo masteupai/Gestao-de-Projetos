@@ -1,0 +1,115 @@
+﻿@using Projeto.GestaoProjetos.Models
+@model IEnumerable<CadProjeto>
+
+@{
+    ViewBag.Title = "Index";
+    List<CadProjeto> projetos = ViewBag.Projetos;
+
+}
+
+<div id="corpoproj" class="col-md-12 fild-borda" style="border:none !important;">
+    <br />
+    <fieldset class="form-horizontal fild-borda" style="border:none!important;">
+
+        <legend class="fild-borda">Lista de Projetos</legend>
+        @*<h2 class="text-center">Gestão de Projetos</h2>
+
+            <img id="imgprojeto" class="img-responsive pull-right" src="~/Images/undraw_code_review_l1q9.svg" />
+            <br />
+            <br />
+            @Html.ActionLink("Criar Novo Projeto", "IncluirProjeto", new { }, new { @class = "btn btn-info btn-lg" })
+
+            @Html.ActionLink("Incluir Colaborador em Projeto", "IncluirColabProjeto", new { }, new { @class = "btn btn-info btn-lg" })
+            <br />*@
+
+        @if (projetos.Count() != 0)
+        {
+            <table class="table table-bordered tables">
+                <tr>
+                    @*<th>
+                            @Html.DisplayNameFor(model => model.IDPROJETO)
+                        </th>*@
+                    <th>
+                        @Html.DisplayNameFor(model => model.Descricao)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IDCLIENTE)
+                    </th>
+                    @*<th>
+                            @Html.DisplayNameFor(model => model.DataInicio)
+                        </th>*@
+                    <th>
+                        @Html.DisplayNameFor(model => model.DataTermino)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NumHoras)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ValorProjeto)
+                    </th>
+                    @*<th>
+                            @Html.DisplayNameFor(model => model.ValorDespesas)
+                        </th>*@
+                    <th>
+                        @Html.DisplayNameFor(model => model.Status)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in projetos)
+                {
+                    <tr>
+                        @*<td>
+                                @Html.DisplayFor(modelItem => item.IDPROJETO)
+                            </td>*@
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Descricao)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ClienteInfo.RazaoSocial)
+                        </td>
+                        @*<td>
+                                @Html.DisplayFor(modelItem => item.DataInicio)
+                            </td>*@
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DataTermino)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NumHoras)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ValorProjeto)
+                        </td>
+                        <td>
+                            @if (item.Status == 1)
+                            {
+                                <span>Em Andamento</span>
+                            }
+                            else
+                            {
+                                if (item.Status == 2)
+                                {
+                                    <span>Pausado</span>
+                                }
+                                else
+                                {
+                                    <span>Finalizado</span>
+
+                                }
+
+                            }
+                        </td>
+                        <td>
+                            @Html.ActionLink(" ", "AlterarProjeto", new { id = item.IDPROJETO }, new { @class = "btn btn-warning glyphicon glyphicon-wrench", style = "color:000; margin-right:10px;", title = "Alterar" })
+                            @Html.ActionLink(" ", "MostrarDetalhesProjeto", new { id = item.IDPROJETO }, new { @class = "btn btn-info glyphicon glyphicon-search", style = "color:000; margin-right:10px;", title = "Detalhes" })
+                        </td>
+                    </tr>
+                }
+            </table>
+        }
+        else
+        {
+            <span class="alert alert-danger col-md-12">Não há Projetos Cadastrados...</span>
+        }
+    </fieldset>
+</div>

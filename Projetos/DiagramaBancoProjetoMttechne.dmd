@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="DiagramaBancoProjetoMttechne" id="E2BB6117-4624-508C-52E3-9E7248CCBDBE" version="3.5">
+<createdBy>matheus.andrade</createdBy>
+<createdTime>2019-11-08 16:17:59 UTC</createdTime>
+<ownerDesignName>DiagramaBancoProjetoMttechne</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>E2BB6117-4624-508C-52E3-9E7248CCBDBE</designId>
+</OSDM_Design>

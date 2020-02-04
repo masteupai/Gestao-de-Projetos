@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Relation_15" directorySegmentName="seg_0" id="A33FC956-FCDC-A073-BA33-847408143980">
+<createdBy>matheus.andrade</createdBy>
+<createdTime>2019-11-12 17:04:27 UTC</createdTime>
+<ownerDesignName>DiagramaBancoProjetoMttechne</ownerDesignName>
+<engineerTo>
+<item key="1684C716-9A8E-AC67-B99D-4FE326F112DA" value="true"/>
+</engineerTo>
+<sourcePk>68B3E2D0-BF3B-C045-B2E9-4137A56D1999</sourcePk>
+<identifying>true</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>7B0DA009-A68D-B8D1-8AE6-9A62D54E2BF7</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>6B71DE69-55F0-1902-8B32-D7B56C16765C</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

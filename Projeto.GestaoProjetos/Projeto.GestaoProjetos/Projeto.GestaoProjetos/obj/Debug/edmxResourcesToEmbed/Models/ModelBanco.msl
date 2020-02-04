@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelProjetosStoreContainer" CdmEntityContainer="ProjetoConnection">
+    <EntitySetMapping Name="Atividades">
+      <EntityTypeMapping TypeName="ModelProjetos.Atividade">
+        <MappingFragment StoreEntitySet="TBATIVIDADES">
+          <ScalarProperty Name="IDATIVIDADE" ColumnName="IDATIVIDADE" />
+          <ScalarProperty Name="HoraInicio" ColumnName="HORAINICIO" />
+          <ScalarProperty Name="HoraFim" ColumnName="HORAFIM" />
+          <ScalarProperty Name="IDPROJ_COLAB" ColumnName="IDPROJ_COLAB" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clientes">
+      <EntityTypeMapping TypeName="ModelProjetos.Cliente">
+        <MappingFragment StoreEntitySet="TBCLIENTES">
+          <ScalarProperty Name="Bairro" ColumnName="BAIRRO" />
+          <ScalarProperty Name="Cidade" ColumnName="CIDADE" />
+          <ScalarProperty Name="Cep" ColumnName="CEP" />
+          <ScalarProperty Name="Numero" ColumnName="NUMERO" />
+          <ScalarProperty Name="Complemento" ColumnName="COMPLEMENTO" />
+          <ScalarProperty Name="IDCLIENTE" ColumnName="IDCLIENTE" />
+          <ScalarProperty Name="Cnpj" ColumnName="CNPJ" />
+          <ScalarProperty Name="RazaoSocial" ColumnName="RAZAOSOCIAL" />
+          <ScalarProperty Name="Telefone" ColumnName="TELEFONE" />
+          <ScalarProperty Name="Endereco" ColumnName="ENDERECO" />
+          <ScalarProperty Name="Email" ColumnName="EMAIL" />
+          <ScalarProperty Name="RamoAtividades" ColumnName="RAMOATIVIDADES" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Colaboradores">
+      <EntityTypeMapping TypeName="ModelProjetos.Colaborador">
+        <MappingFragment StoreEntitySet="TBCOLABORADORES">
+          <ScalarProperty Name="Status" ColumnName="STATUSCOLABORADOR" />
+          <ScalarProperty Name="Documento" ColumnName="DOCUMENTO" />
+          <ScalarProperty Name="Email" ColumnName="EMAIL" />
+          <ScalarProperty Name="Telefone" ColumnName="TELEFONE" />
+          <ScalarProperty Name="IDSKILL" ColumnName="IDSKILL" />
+          <ScalarProperty Name="Tipo" ColumnName="TIPO" />
+          <ScalarProperty Name="IDCOLABORADOR" ColumnName="IDCOLABORADOR" />
+          <ScalarProperty Name="Nome" ColumnName="NOME" />
+          <ScalarProperty Name="ValorHora" ColumnName="VALORHORA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Proj_Colaboradores">
+      <EntityTypeMapping TypeName="ModelProjetos.ProjetosColaborador">
+        <MappingFragment StoreEntitySet="TBPROJ_COLAB">
+          <ScalarProperty Name="ValorColaborador" ColumnName="VALORHORACOLABORADOR" />
+          <ScalarProperty Name="IDSKILL" ColumnName="IDSKILL" />
+          <ScalarProperty Name="IDCOLABORADOR" ColumnName="IDCOLABORADOR" />
+          <ScalarProperty Name="IDPROJ_COLAB" ColumnName="IDPROJ_COLAB" />
+          <ScalarProperty Name="IDPROJETO" ColumnName="IDPROJETO" />
+          <ScalarProperty Name="ValorHoraProjColab" ColumnName="VALORHORAPROJ_COLAB" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CadProjetos">
+      <EntityTypeMapping TypeName="ModelProjetos.CadProjeto">
+        <MappingFragment StoreEntitySet="TBPROJETOS">
+          <ScalarProperty Name="Escopo" ColumnName="ESCOPO" />
+          <ScalarProperty Name="Status" ColumnName="STATUSPROJETO" />
+          <ScalarProperty Name="IDPROJETO" ColumnName="IDPROJETO" />
+          <ScalarProperty Name="Descricao" ColumnName="DESCRICAO" />
+          <ScalarProperty Name="IDCLIENTE" ColumnName="IDCLIENTE" />
+          <ScalarProperty Name="DataInicio" ColumnName="DATAINICIO" />
+          <ScalarProperty Name="DataTermino" ColumnName="DATATERMINO" />
+          <ScalarProperty Name="NumHoras" ColumnName="NUMHORAS" />
+          <ScalarProperty Name="ValorProjeto" ColumnName="VALORPROJETO" />
+          <ScalarProperty Name="ValorDespesas" ColumnName="VALORDESPESAS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Skills">
+      <EntityTypeMapping TypeName="ModelProjetos.Skill">
+        <MappingFragment StoreEntitySet="TBSKILLS">
+          <ScalarProperty Name="IDSKILL" ColumnName="IDSKILL" />
+          <ScalarProperty Name="Descricao" ColumnName="DESCRICAO" />
+          <ScalarProperty Name="Nivel" ColumnName="NIVEL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

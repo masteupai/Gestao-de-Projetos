@@ -1,0 +1,71 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="5C9881D3-D278-2ECF-8A50-1F448FBE7628" name="TBColab_Skill">
+<createdBy>matheus.andrade</createdBy>
+<createdTime>2019-11-12 17:12:46 UTC</createdTime>
+<ownerDesignName>DiagramaBancoProjetoMttechne</ownerDesignName>
+<engineerTo>
+<item key="1684C716-9A8E-AC67-B99D-4FE326F112DA" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="IdColab_Skill" id="9C21B160-D1EA-A9F7-646B-F6C586ECBF40">
+<createdBy>matheus.andrade</createdBy>
+<createdTime>2019-11-12 17:23:21 UTC</createdTime>
+<ownerDesignName>DiagramaBancoProjetoMttechne</ownerDesignName>
+<engineerTo>
+<item key="1684C716-9A8E-AC67-B99D-4FE326F112DA" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="IdColaborador" id="7B0834DF-CDC1-5213-0867-916E7691B1D1">
+<createdBy>matheus.andrade</createdBy>
+<createdTime>2019-11-12 17:13:38 UTC</createdTime>
+<generatorID>935A1DC7-E8CF-2852-738F-1454F42ED91E</generatorID>
+<ownerDesignName>DiagramaBancoProjetoMttechne</ownerDesignName>
+<engineerTo>
+<item key="1684C716-9A8E-AC67-B99D-4FE326F112DA" value="true"/>
+</engineerTo>
+<referedAttribute>234B1D9A-1791-AC52-974A-33FEA355CBE0</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="IdSkill" id="5A88AA3D-1A3D-3F11-9B9C-B48ED70E4BF2">
+<createdBy>matheus.andrade</createdBy>
+<createdTime>2019-11-12 17:13:43 UTC</createdTime>
+<generatorID>6C3DD00B-23CF-8BAE-544E-717B05CCCC65</generatorID>
+<ownerDesignName>DiagramaBancoProjetoMttechne</ownerDesignName>
+<engineerTo>
+<item key="1684C716-9A8E-AC67-B99D-4FE326F112DA" value="true"/>
+</engineerTo>
+<referedAttribute>1A13FB37-C515-14AE-7BBD-B0BC68419EC5</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="2D457C50-DE8E-F552-29B4-0F29FA978502" name="TBCOLAB_SKILL PK">
+<createdBy>matheus.andrade</createdBy>
+<createdTime>2019-11-12 17:13:38 UTC</createdTime>
+<ownerDesignName>DiagramaBancoProjetoMttechne</ownerDesignName>
+<engineerTo>
+<item key="1684C716-9A8E-AC67-B99D-4FE326F112DA" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>9C21B160-D1EA-A9F7-646B-F6C586ECBF40</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

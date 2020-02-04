@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "Incluir Role";
+}
+<div id="login">
+<h2>Cadastrar Role</h2>
+<br />
+@if (!string.IsNullOrEmpty(ViewBag.Resposta))
+{
+    <div class="alert alert-success">
+        @ViewBag.Resposta
+    </div>
+}
+
+@using (Html.BeginForm())
+{
+
+    <div class="form-horizontal">
+  
+        <div class="form-group">
+            @Html.Label("Role:", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBox("role", "", new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Incluir Role" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+
+}
+</div>
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $("#login").hide();
+            $("#login").slideDown("slow");
+        });
+    </script>
+}

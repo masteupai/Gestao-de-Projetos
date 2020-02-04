@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ModelProjetos.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="TBATIVIDADES">
+    <Key>
+      <PropertyRef Name="IDATIVIDADE" />
+    </Key>
+    <Property Name="IDATIVIDADE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HORAINICIO" Type="datetime" Nullable="false" />
+    <Property Name="HORAFIM" Type="datetime" Nullable="false" />
+    <Property Name="IDPROJ_COLAB" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TBCLIENTES">
+    <Key>
+      <PropertyRef Name="IDCLIENTE" />
+    </Key>
+    <Property Name="IDCLIENTE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CNPJ" Type="varchar" MaxLength="14" Nullable="false" />
+    <Property Name="RAZAOSOCIAL" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="TELEFONE" Type="varchar" MaxLength="13" Nullable="false" />
+    <Property Name="CEP" Type="int" Nullable="false" />
+    <Property Name="CIDADE" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="BAIRRO" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="ENDERECO" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="NUMERO" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="COMPLEMENTO" Type="varchar" MaxLength="30" />
+    <Property Name="EMAIL" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="RAMOATIVIDADES" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TBCOLABORADORES">
+    <Key>
+      <PropertyRef Name="IDCOLABORADOR" />
+    </Key>
+    <Property Name="IDCOLABORADOR" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NOME" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DOCUMENTO" Type="varchar" MaxLength="14" Nullable="false" />
+    <Property Name="VALORHORA" Type="float" Nullable="false" />
+    <Property Name="TIPO" Type="int" Nullable="false" />
+    <Property Name="IDSKILL" Type="int" Nullable="false" />
+    <Property Name="TELEFONE" Type="varchar" MaxLength="13" />
+    <Property Name="EMAIL" Type="varchar" MaxLength="50" />
+    <Property Name="STATUSCOLABORADOR" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TBPROJ_COLAB">
+    <Key>
+      <PropertyRef Name="IDPROJ_COLAB" />
+    </Key>
+    <Property Name="IDPROJ_COLAB" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDCOLABORADOR" Type="int" Nullable="false" />
+    <Property Name="IDPROJETO" Type="int" Nullable="false" />
+    <Property Name="IDSKILL" Type="int" Nullable="false" />
+    <Property Name="VALORHORAPROJ_COLAB" Type="float" Nullable="false" />
+    <Property Name="VALORHORACOLABORADOR" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TBPROJETOS">
+    <Key>
+      <PropertyRef Name="IDPROJETO" />
+    </Key>
+    <Property Name="IDPROJETO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DESCRICAO" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="IDCLIENTE" Type="int" Nullable="false" />
+    <Property Name="DATAINICIO" Type="datetime" Nullable="false" />
+    <Property Name="DATATERMINO" Type="datetime" />
+    <Property Name="NUMHORAS" Type="int" />
+    <Property Name="VALORPROJETO" Type="float" Nullable="false" />
+    <Property Name="VALORDESPESAS" Type="float" />
+    <Property Name="STATUSPROJETO" Type="int" Nullable="false" />
+    <Property Name="ESCOPO" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TBSKILLS">
+    <Key>
+      <PropertyRef Name="IDSKILL" />
+    </Key>
+    <Property Name="IDSKILL" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DESCRICAO" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="NIVEL" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_TBPROJETOS_TBPROJETOS">
+    <End Role="TBPROJETOS" Type="Self.TBPROJETOS" Multiplicity="1" />
+    <End Role="TBPROJETOS1" Type="Self.TBPROJETOS" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="TBPROJETOS">
+        <PropertyRef Name="IDPROJETO" />
+      </Principal>
+      <Dependent Role="TBPROJETOS1">
+        <PropertyRef Name="IDPROJETO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TB_ATIVIDADES_FK_IDPROJ_COLAB">
+    <End Role="TBPROJ_COLAB" Type="Self.TBPROJ_COLAB" Multiplicity="1" />
+    <End Role="TBATIVIDADES" Type="Self.TBATIVIDADES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBPROJ_COLAB">
+        <PropertyRef Name="IDPROJ_COLAB" />
+      </Principal>
+      <Dependent Role="TBATIVIDADES">
+        <PropertyRef Name="IDPROJ_COLAB" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TB_COLABORADORES_FK_IDSKILL">
+    <End Role="TBSKILLS" Type="Self.TBSKILLS" Multiplicity="1" />
+    <End Role="TBCOLABORADORES" Type="Self.TBCOLABORADORES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBSKILLS">
+        <PropertyRef Name="IDSKILL" />
+      </Principal>
+      <Dependent Role="TBCOLABORADORES">
+        <PropertyRef Name="IDSKILL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TB_PROJCOLAB_FK_IDCOLABORADOR">
+    <End Role="TBCOLABORADORES" Type="Self.TBCOLABORADORES" Multiplicity="1" />
+    <End Role="TBPROJ_COLAB" Type="Self.TBPROJ_COLAB" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBCOLABORADORES">
+        <PropertyRef Name="IDCOLABORADOR" />
+      </Principal>
+      <Dependent Role="TBPROJ_COLAB">
+        <PropertyRef Name="IDCOLABORADOR" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TB_PROJCOLAB_FK_IDPROJETO">
+    <End Role="TBPROJETOS" Type="Self.TBPROJETOS" Multiplicity="1" />
+    <End Role="TBPROJ_COLAB" Type="Self.TBPROJ_COLAB" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBPROJETOS">
+        <PropertyRef Name="IDPROJETO" />
+      </Principal>
+      <Dependent Role="TBPROJ_COLAB">
+        <PropertyRef Name="IDPROJETO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TB_PROJCOLAB_FK_IDSKILL">
+    <End Role="TBSKILLS" Type="Self.TBSKILLS" Multiplicity="1" />
+    <End Role="TBPROJ_COLAB" Type="Self.TBPROJ_COLAB" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBSKILLS">
+        <PropertyRef Name="IDSKILL" />
+      </Principal>
+      <Dependent Role="TBPROJ_COLAB">
+        <PropertyRef Name="IDSKILL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TB_PROJETOS_FK_IDCLIENTE">
+    <End Role="TBCLIENTES" Type="Self.TBCLIENTES" Multiplicity="1" />
+    <End Role="TBPROJETOS" Type="Self.TBPROJETOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBCLIENTES">
+        <PropertyRef Name="IDCLIENTE" />
+      </Principal>
+      <Dependent Role="TBPROJETOS">
+        <PropertyRef Name="IDCLIENTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ModelProjetosStoreContainer">
+    <EntitySet Name="TBATIVIDADES" EntityType="Self.TBATIVIDADES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBCLIENTES" EntityType="Self.TBCLIENTES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBCOLABORADORES" EntityType="Self.TBCOLABORADORES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBPROJ_COLAB" EntityType="Self.TBPROJ_COLAB" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBPROJETOS" EntityType="Self.TBPROJETOS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBSKILLS" EntityType="Self.TBSKILLS" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_TBPROJETOS_TBPROJETOS" Association="Self.FK_TBPROJETOS_TBPROJETOS">
+      <End Role="TBPROJETOS" EntitySet="TBPROJETOS" />
+      <End Role="TBPROJETOS1" EntitySet="TBPROJETOS" />
+    </AssociationSet>
+    <AssociationSet Name="TB_ATIVIDADES_FK_IDPROJ_COLAB" Association="Self.TB_ATIVIDADES_FK_IDPROJ_COLAB">
+      <End Role="TBPROJ_COLAB" EntitySet="TBPROJ_COLAB" />
+      <End Role="TBATIVIDADES" EntitySet="TBATIVIDADES" />
+    </AssociationSet>
+    <AssociationSet Name="TB_COLABORADORES_FK_IDSKILL" Association="Self.TB_COLABORADORES_FK_IDSKILL">
+      <End Role="TBSKILLS" EntitySet="TBSKILLS" />
+      <End Role="TBCOLABORADORES" EntitySet="TBCOLABORADORES" />
+    </AssociationSet>
+    <AssociationSet Name="TB_PROJCOLAB_FK_IDCOLABORADOR" Association="Self.TB_PROJCOLAB_FK_IDCOLABORADOR">
+      <End Role="TBCOLABORADORES" EntitySet="TBCOLABORADORES" />
+      <End Role="TBPROJ_COLAB" EntitySet="TBPROJ_COLAB" />
+    </AssociationSet>
+    <AssociationSet Name="TB_PROJCOLAB_FK_IDPROJETO" Association="Self.TB_PROJCOLAB_FK_IDPROJETO">
+      <End Role="TBPROJETOS" EntitySet="TBPROJETOS" />
+      <End Role="TBPROJ_COLAB" EntitySet="TBPROJ_COLAB" />
+    </AssociationSet>
+    <AssociationSet Name="TB_PROJCOLAB_FK_IDSKILL" Association="Self.TB_PROJCOLAB_FK_IDSKILL">
+      <End Role="TBSKILLS" EntitySet="TBSKILLS" />
+      <End Role="TBPROJ_COLAB" EntitySet="TBPROJ_COLAB" />
+    </AssociationSet>
+    <AssociationSet Name="TB_PROJETOS_FK_IDCLIENTE" Association="Self.TB_PROJETOS_FK_IDCLIENTE">
+      <End Role="TBCLIENTES" EntitySet="TBCLIENTES" />
+      <End Role="TBPROJETOS" EntitySet="TBPROJETOS" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

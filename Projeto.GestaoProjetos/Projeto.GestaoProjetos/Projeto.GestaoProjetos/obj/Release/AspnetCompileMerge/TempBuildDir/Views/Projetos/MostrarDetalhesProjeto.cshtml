@@ -1,0 +1,323 @@
+﻿@using Projeto.GestaoProjetos.ViewModel
+@using Projeto.GestaoProjetos.Models
+@model CadProjeto
+@{
+    ViewBag.Title = "MostrarDetalhesProjeto";
+    var status = Model.Status;
+    var colaboradores = (IEnumerable<ProjetosColaborador>)ViewBag.Colaboradores;
+    var valores = (ProjetoValoresViewModel)ViewBag.Valores;
+
+}
+
+<div>
+    <br />
+    <br />
+    <div class="col-md-6">
+        <fieldset class="fild-borda">
+            <legend class="fild-borda">Detalhes</legend>
+            <dl class="dl-horizontal">
+                @Html.HiddenFor(model => model.IDPROJETO, new { id = "id" })
+                @*<dt>
+                        @Html.DisplayNameFor(model => model.IDPROJETO)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.IDPROJETO)
+                    </dd>*@
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Descricao)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Descricao)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ClienteInfo.RazaoSocial)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ClienteInfo.RazaoSocial)
+                </dd>
+
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.DataInicio)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.DataInicio)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.DataTermino)
+                </dt>
+
+                <dd>
+                    @if (Model.DataTermino != null)
+                    {
+                        @Html.DisplayFor(model => model.DataTermino)
+                    }
+                    else
+                    {
+                        <span>Não Informado</span>
+                    }
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.NumHoras)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.NumHoras)
+                </dd>
+
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ValorProjeto)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ValorProjeto)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ValorDespesas)
+                </dt>
+
+                <dd class="text-danger">
+                    @if (Model.ValorDespesas != null)
+                    {
+                        @Html.DisplayFor(model => model.ValorDespesas)
+                    }
+                    else
+                    {
+                        <span>R$ 0</span>
+                    }
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Status)
+                </dt>
+
+                <dd>
+                    @if (status == 1)
+                    {
+                        <span>Em Andamento</span>
+                    }
+                    else
+                    {
+                        if (status == 2)
+                        {
+                            <span>Pausado</span>
+                        }
+                        else
+                        {
+                            <span>Finalizado</span>
+
+                        }
+
+                    }
+                    @*@Html.DisplayFor(model => model.Status)*@
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Escopo)
+                </dt>
+                <dd>
+                    @if (Model.Escopo == 1)
+                    {
+                        <span>Aberto</span>
+                    }
+                    else
+                    {
+                        <span>Fechado</span>
+                    }
+                </dd>
+            </dl>
+            <br />
+            <p>
+                @Html.ActionLink("Alterar", "AlterarProjeto", new { id = Model.IDPROJETO }, new { @class = "btn btn-info" })
+                @Html.ActionLink("Voltar", "Index", new { }, new { @class = "btn btn-info" })
+            </p>
+        </fieldset>
+        <br />
+    </div>
+    <div class="col-md-6">
+        <fieldset class="fild-borda">
+            <legend class="fild-borda">Valores</legend>           
+            <dl class="dl-horizontal">
+                @Html.HiddenFor(model => model.IDPROJETO, new { id = "id" })
+                @*<dt>
+            @Html.DisplayNameFor(model => model.IDPROJETO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IDPROJETO)
+        </dd>*@
+
+                <dt>
+                    @Html.Label("Total de Horas:")
+
+                </dt>
+
+                <dd class="text-info">
+                    @valores.NumHorasProj
+                </dd>
+                <dt>
+                    @Html.Label("Horas restantes:")
+
+                </dt>
+
+                <dd class="text-info">
+                    @valores.HorasRestantes
+                </dd>
+
+                <dt>
+                    @Html.Label("Horas Trabalhadas:")
+
+                </dt>
+
+                <dd class="text-info">
+                    @valores.HorasTrabalhadas
+                </dd>
+
+                <dt>
+                    @Html.Label("Colaboradores:")
+                </dt>
+
+                <dd class="text-success">
+                    @string.Format("{0:c}", valores.ValorPedidoColaboradores)
+                </dd>
+
+                <dt>
+                    @Html.Label("Pago pela Mttechne:")
+
+                </dt>
+
+                <dd class="text-danger">
+                    @string.Format("{0:c}", valores.ValorPagoColaboradores)
+
+                </dd>
+                <dt>
+                    @Html.Label("Valor do Projeto:")
+                </dt>
+
+                <dd class="text-success">
+                    @string.Format("{0:c}", valores.ValorOrca)
+                </dd> 
+                <dt>
+                    @Html.Label("Despesas no Projeto:")
+                </dt>
+
+                <dd class="text-danger">
+                    @string.Format("{0:c}", valores.ValorDespesas)
+                </dd>
+
+                <dt>
+                    @Html.Label("Lucro Total:")
+
+                </dt>
+                @if (valores.ValorTotal > 0)
+                {
+                    <dd class="text-success">
+                        @string.Format("{0:c}", valores.ValorTotal)
+                    </dd>
+                }
+                else
+                {
+                    <dd class="text-danger">
+                        @string.Format("{0:c}", valores.ValorTotal)
+                    </dd>
+
+                }
+            </dl>
+           
+        </fieldset>
+    </div>
+</div>
+<div class="modal" id="modal"></div>
+<br />
+<br />
+<br />
+@if (colaboradores.Count() != 0)
+{
+    <h2 class="text-center">Colaboradores neste Projeto</h2>
+    <br />
+    <table class="table table-bordered tables">
+        <tr>
+            <th>
+                @Html.DisplayName("Nome:")
+            </th>
+            <th>
+                @Html.DisplayName("Habilidade:")
+            </th>
+            <th>
+                @Html.DisplayName("Nivel:")
+            </th>
+            <th>
+                @Html.DisplayName("Valor Pago no Projeto:")
+            </th>
+            <th>
+                @Html.DisplayName("Valor do Colaborador:")
+            </th>
+            <th>Opções:</th>
+        </tr>
+
+        @foreach (var item in colaboradores)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ColaboradorInfo.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SkillInfo.Descricao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SkillInfo.Nivel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ValorHoraProjColab)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ValorColaborador)
+                </td>
+                <td>
+                    @Html.ActionLink(" ", "DetalhesColaborador", "Colaboradores", new { id = item.IDCOLABORADOR }, new { @class = "btn btn-info glyphicon glyphicon-search", style = "color:000; margin-right:10px;", title = "Detalhes" })
+                    @Html.ActionLink(" ", "RemoverColaboradorProjeto", "Projetos", new { id = item.IDPROJ_COLAB }, new { @class = "btn btn-danger glyphicon glyphicon-remove", style = "color:000; margin-right:10px;", title = "Remover" })
+
+                </td>
+            </tr>
+        }
+
+    </table>
+}
+else
+{
+    <span class="alert alert-danger col-md-12">Não há colaboradores neste projeto...</span>
+}
+
+
+
+
+
+
+
+
+
+
+
+
+@section Scripts{
+
+    <script>
+        $(document).ready(function () {
+            $("#botao").click(function () {
+                var id = $("#id").val();
+                $("#modal").load("/Projetos/ListarColaboradoresProjetoAjax/" + id, function () {
+                    $("#modal").modal();
+                });
+            });
+        });
+    </script>
+}

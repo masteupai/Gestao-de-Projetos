@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ModelProjetos" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Atividade">
+    <Key>
+      <PropertyRef Name="IDATIVIDADE" />
+    </Key>
+    <Property Name="IDATIVIDADE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HoraInicio" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="HoraFim" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IDPROJ_COLAB" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ProjetoColaborador" Relationship="Self.TB_ATIVIDADES_FK_IDPROJ_COLAB" FromRole="TBATIVIDADES" ToRole="TBPROJ_COLAB" />
+  </EntityType>
+  <EntityType Name="Cliente">
+    <Key>
+      <PropertyRef Name="IDCLIENTE" />
+    </Key>
+    <Property Name="IDCLIENTE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Cnpj" Type="String" MaxLength="14" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="RazaoSocial" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Telefone" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Endereco" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="RamoAtividades" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Projeto" Relationship="Self.TB_PROJETOS_FK_IDCLIENTE" FromRole="TBCLIENTES" ToRole="TBPROJETOS" />
+    <Property Name="Complemento" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Numero" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Cep" Type="Int32" Nullable="false" />
+    <Property Name="Cidade" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Bairro" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Colaborador">
+    <Key>
+      <PropertyRef Name="IDCOLABORADOR" />
+    </Key>
+    <Property Name="IDCOLABORADOR" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ValorHora" Type="Double" Nullable="false" />
+    <Property Name="Tipo" Type="Int32" Nullable="false" />
+    <Property Name="IDSKILL" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="SkillInfo" Relationship="ModelProjetos.TB_COLABORADORES_FK_IDSKILL" FromRole="Colaborador" ToRole="Skill" />
+    <NavigationProperty Name="ProjetoColaborador" Relationship="ModelProjetos.TB_PROJCOLAB_FK_IDCOLABORADOR" FromRole="Colaborador" ToRole="ProjetosColaborador" />
+    <Property Name="Telefone" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Documento" Type="String" Nullable="false" MaxLength="14" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProjetosColaborador">
+    <Key>
+      <PropertyRef Name="IDPROJ_COLAB" />
+    </Key>
+    <Property Name="IDPROJ_COLAB" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDPROJETO" Type="Int32" Nullable="false" />
+    <Property Name="ValorHoraProjColab" Type="Double" Nullable="false" />
+    <NavigationProperty Name="Atividade" Relationship="Self.TB_ATIVIDADES_FK_IDPROJ_COLAB" FromRole="TBPROJ_COLAB" ToRole="TBATIVIDADES" />
+    <NavigationProperty Name="Projeto" Relationship="Self.TB_PROJCOLAB_FK_IDPROJETO" FromRole="TBPROJ_COLAB" ToRole="TBPROJETOS" />
+    <Property Name="IDCOLABORADOR" Type="Int32" Nullable="false" />
+    <Property Name="IDSKILL" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ColaboradorInfo" Relationship="ModelProjetos.TB_PROJCOLAB_FK_IDCOLABORADOR" FromRole="ProjetosColaborador" ToRole="Colaborador" />
+    <NavigationProperty Name="SkillInfo" Relationship="ModelProjetos.TB_PROJCOLAB_FK_IDSKILL" FromRole="ProjetosColaborador" ToRole="Skill" />
+    <Property Name="ValorColaborador" Type="Double" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CadProjeto">
+    <Key>
+      <PropertyRef Name="IDPROJETO" />
+    </Key>
+    <Property Name="IDPROJETO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descricao" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IDCLIENTE" Type="Int32" Nullable="false" />
+    <Property Name="DataInicio" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DataTermino" Type="DateTime" Precision="3" />
+    <Property Name="NumHoras" Type="Int32" />
+    <Property Name="ValorProjeto" Type="Double" Nullable="false" />
+    <Property Name="ValorDespesas" Type="Double" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ClienteInfo" Relationship="Self.TB_PROJETOS_FK_IDCLIENTE" FromRole="TBPROJETOS" ToRole="TBCLIENTES" />
+    <NavigationProperty Name="ProjetoColaborador" Relationship="Self.TB_PROJCOLAB_FK_IDPROJETO" FromRole="TBPROJETOS" ToRole="TBPROJ_COLAB" />
+    <Property Name="Escopo" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Skill">
+    <Key>
+      <PropertyRef Name="IDSKILL" />
+    </Key>
+    <Property Name="IDSKILL" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descricao" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nivel" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="ColaboradorInfo" Relationship="ModelProjetos.TB_COLABORADORES_FK_IDSKILL" FromRole="Skill" ToRole="Colaborador" />
+    <NavigationProperty Name="ProjetoColaborador" Relationship="ModelProjetos.TB_PROJCOLAB_FK_IDSKILL" FromRole="Skill" ToRole="ProjetosColaborador" />
+  </EntityType>
+  <Association Name="TB_ATIVIDADES_FK_IDPROJ_COLAB">
+    <End Role="TBPROJ_COLAB" Type="ModelProjetos.ProjetosColaborador" Multiplicity="1" />
+    <End Role="TBATIVIDADES" Type="ModelProjetos.Atividade" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBPROJ_COLAB">
+        <PropertyRef Name="IDPROJ_COLAB" />
+      </Principal>
+      <Dependent Role="TBATIVIDADES">
+        <PropertyRef Name="IDPROJ_COLAB" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TB_PROJETOS_FK_IDCLIENTE">
+    <End Role="TBCLIENTES" Type="ModelProjetos.Cliente" Multiplicity="1" />
+    <End Role="TBPROJETOS" Type="ModelProjetos.CadProjeto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBCLIENTES">
+        <PropertyRef Name="IDCLIENTE" />
+      </Principal>
+      <Dependent Role="TBPROJETOS">
+        <PropertyRef Name="IDCLIENTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TB_PROJCOLAB_FK_IDPROJETO">
+    <End Role="TBPROJETOS" Type="ModelProjetos.CadProjeto" Multiplicity="1" />
+    <End Role="TBPROJ_COLAB" Type="ModelProjetos.ProjetosColaborador" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBPROJETOS">
+        <PropertyRef Name="IDPROJETO" />
+      </Principal>
+      <Dependent Role="TBPROJ_COLAB">
+        <PropertyRef Name="IDPROJETO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ProjetoConnection" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Atividades" EntityType="ModelProjetos.Atividade" />
+    <EntitySet Name="Clientes" EntityType="ModelProjetos.Cliente" />
+    <EntitySet Name="Colaboradores" EntityType="ModelProjetos.Colaborador" />
+    <EntitySet Name="Proj_Colaboradores" EntityType="ModelProjetos.ProjetosColaborador" />
+    <EntitySet Name="CadProjetos" EntityType="ModelProjetos.CadProjeto" />
+    <EntitySet Name="Skills" EntityType="ModelProjetos.Skill" />
+    <AssociationSet Name="TB_ATIVIDADES_FK_IDPROJ_COLAB" Association="Self.TB_ATIVIDADES_FK_IDPROJ_COLAB">
+      <End Role="TBPROJ_COLAB" EntitySet="Proj_Colaboradores" />
+      <End Role="TBATIVIDADES" EntitySet="Atividades" />
+    </AssociationSet>
+    <AssociationSet Name="TB_PROJETOS_FK_IDCLIENTE" Association="Self.TB_PROJETOS_FK_IDCLIENTE">
+      <End Role="TBCLIENTES" EntitySet="Clientes" />
+      <End Role="TBPROJETOS" EntitySet="CadProjetos" />
+    </AssociationSet>
+    <AssociationSet Name="TB_PROJCOLAB_FK_IDPROJETO" Association="Self.TB_PROJCOLAB_FK_IDPROJETO">
+      <End Role="TBPROJETOS" EntitySet="CadProjetos" />
+      <End Role="TBPROJ_COLAB" EntitySet="Proj_Colaboradores" />
+    </AssociationSet>
+    <AssociationSet Name="TB_COLABORADORES_FK_IDSKILL" Association="ModelProjetos.TB_COLABORADORES_FK_IDSKILL">
+      <End Role="Skill" EntitySet="Skills" />
+      <End Role="Colaborador" EntitySet="Colaboradores" />
+    </AssociationSet>
+    <AssociationSet Name="TB_PROJCOLAB_FK_IDCOLABORADOR" Association="ModelProjetos.TB_PROJCOLAB_FK_IDCOLABORADOR">
+      <End Role="Colaborador" EntitySet="Colaboradores" />
+      <End Role="ProjetosColaborador" EntitySet="Proj_Colaboradores" />
+    </AssociationSet>
+    <AssociationSet Name="TB_PROJCOLAB_FK_IDSKILL" Association="ModelProjetos.TB_PROJCOLAB_FK_IDSKILL">
+      <End Role="Skill" EntitySet="Skills" />
+      <End Role="ProjetosColaborador" EntitySet="Proj_Colaboradores" />
+    </AssociationSet>
+  </EntityContainer>
+  <Association Name="TB_COLABORADORES_FK_IDSKILL">
+    <End Type="ModelProjetos.Skill" Role="Skill" Multiplicity="1" />
+    <End Type="ModelProjetos.Colaborador" Role="Colaborador" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Skill">
+        <PropertyRef Name="IDSKILL" />
+      </Principal>
+      <Dependent Role="Colaborador">
+        <PropertyRef Name="IDSKILL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TB_PROJCOLAB_FK_IDCOLABORADOR">
+    <End Type="ModelProjetos.Colaborador" Role="Colaborador" Multiplicity="1" />
+    <End Type="ModelProjetos.ProjetosColaborador" Role="ProjetosColaborador" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Colaborador">
+        <PropertyRef Name="IDCOLABORADOR" />
+      </Principal>
+      <Dependent Role="ProjetosColaborador">
+        <PropertyRef Name="IDCOLABORADOR" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TB_PROJCOLAB_FK_IDSKILL">
+    <End Type="ModelProjetos.Skill" Role="Skill" Multiplicity="1" />
+    <End Type="ModelProjetos.ProjetosColaborador" Role="ProjetosColaborador" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Skill">
+        <PropertyRef Name="IDSKILL" />
+      </Principal>
+      <Dependent Role="ProjetosColaborador">
+        <PropertyRef Name="IDSKILL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

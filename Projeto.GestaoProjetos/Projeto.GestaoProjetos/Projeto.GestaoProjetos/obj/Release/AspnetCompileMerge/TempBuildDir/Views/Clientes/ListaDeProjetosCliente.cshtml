@@ -1,0 +1,92 @@
+﻿@model IEnumerable<Projeto.GestaoProjetos.Models.CadProjeto>
+
+@{
+    ViewBag.Title = "ListaDeProjetosCliente";
+
+}
+
+<h2>Lista de Projetos</h2>
+
+<table class="table tables">
+    <tr>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IDCLIENTE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataInicio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataTermino)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumHoras)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ValorProjeto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ValorDespesas)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+           
+            <td>
+                @Html.DisplayFor(modelItem => item.Descricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClienteInfo.RazaoSocial)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataInicio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataTermino)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumHoras)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ValorProjeto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ValorDespesas)
+            </td>
+            <td>
+                @if (item.Status == 1)
+                {
+                    <span>Em Andamento</span>
+                }
+                else
+                {
+                    if (item.Status == 2)
+                    {
+                        <span>Pausado</span>
+                    }
+                    else
+                    {
+                        <span>Finalizado</span>
+
+                    }
+
+                }
+            </td>
+            <td>
+                @Html.ActionLink(" ", "MostrarDetalhesProjeto", "Projetos", new { id = item.IDPROJETO }, new { @class = "btn btn-info glyphicon glyphicon-search", style = "color:000; margin-right:10px;", title = "Detalhes" })
+            </td>
+        </tr>
+    }
+
+</table>
+@Html.ActionLink("Voltar", "Index", new { }, new { @class = "btn btn-info" })
+<br />

@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <link rel="shortcut icon" type="image/x-icon" href="~/Images/7283logo.ico">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Mttechne Gestão de Projetos</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+    <link href="~/Scripts/StyleSheet1.css" rel="stylesheet" />
+    <link href="~/Content/toastr.css" rel="stylesheet" />
+
+
+</head>
+<body id="body">
+    <div id="navigation" style="color:black;" class="navbar navbar-inverse navbar-fixed-top ">
+        @*<div class="navbar-left">
+                <img src="~/Images/logo.png" style="height:45px;margin-left:15px;"/>
+            </div>*@
+        @*<img src="~/Images/logo.png" style="height:45px;margin-top:4px; margin-left:20px;;position: fixed;" class="text-center" />*@
+        <div id="navigation" class="container">
+            <div class="navbar-header navigation">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                @*@Html.ActionLink("Mttechne - Gestão de Projetos", "Index", "Home", new { area = "" }, new { @class = "navbar-brand ", id = "logo" })*@
+                <a class="navbar-brand" href="/Home/Index">
+                    <i style="font-size: 14px; margin-left:35px;"> Mttechne</i>
+                    <img src="~/Images/logo.png" style="height:28px; margin-top: -27px;" />
+                </a>
+            </div>
+            <div class="navbar-collapse collapse navigation">
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown dropnav dropdown-toggle active">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Clientes <span class="caret"></span></a>
+                        <ul class="dropdown-menu dropnav">
+                            <li>@Html.ActionLink("Cadastrar Cliente", "IncluirCliente" , "Clientes")</li>
+                            <li>@Html.ActionLink("Lista de Clientes", "Index", "Clientes")</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown dropnav dropdown-toggle active">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Colaboradores <span class="caret"></span></a>
+                        <ul class="dropdown-menu dropnav">
+                            <li>@Html.ActionLink("Cadastrar Colaborador", "IncluirColaborador", "Colaboradores")</li>                            
+                            <li>@Html.ActionLink("Cadastrar Skill", "IncluirSkills","Colaboradores" )</li>
+                            <li>@Html.ActionLink("Lista de Skills", "ListarSkills","Colaboradores")</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown dropnav dropdown-toggle active">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Projetos <span class="caret"></span></a>
+                        <ul class="dropdown-menu dropnav">
+                            <li>@Html.ActionLink("Criar Novo Projeto", "IncluirProjeto","Projetos")</li>
+                            <li> @Html.ActionLink("Incluir Colaborador em Projeto", "IncluirColabProjeto", "Projetos")</li>
+                            <li>@Html.ActionLink("Lista de Projetos", "Index", "Projetos")</li>
+                        </ul>
+                    </li>
+
+                </ul>
+                
+                @*<ul class="nav navbar-nav">
+                        <li class="navitem">@Html.ActionLink("Clientes", "Index", "Clientes")</li>
+                        <li class="navitem">@Html.ActionLink("Colaboradores", "Index", "Colaboradores")</li>
+                        <li class="navitem">@Html.ActionLink("Projetos", "Index", "Projetos")</li>
+                    </ul>*@
+                <ul class="nav navbar-nav navbar-right navigation login">
+                    @{
+                        Html.RenderPartial("_Login");
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="corpo" class="container body-content table-bordered">
+        @RenderBody()
+
+        <br />
+        <div class="col-md-12">
+            <footer>
+                <br />
+                <p>
+                    <img src="~/Images/logo.png" style="height:28px; margin-top: -5px;" />
+
+                    <i style="font-size: 14px; margin-left:5px;"> &copy; @DateTime.Now.Year  Mttechne - Gestão de Projetos</i>
+
+                </p>
+                @*<div class="text-right" style="margin-top:-20px;">
+                        <img src="~/Images/logo.png" style="height:28px; margin-top: -17px;" />
+                        <i style="font-size: 14px; margin-left:8px;"> Mttechne</i>
+                    </div>*@
+            </footer>
+        </div>
+
+
+        <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+        <script src="~/Scripts/bootstrap.min.js"></script>
+        <script src="~/Scripts/toastr.js"></script>
+
+        @RenderSection("Scripts", false)
+    </div>
+
+    <script>
+        $(function () {
+            var msg = '@TempData["Mensagem"]';
+            if (msg) {
+                toastr.success(msg);
+            }
+        });
+        $(document).ready(function () {
+            $(".dropnav").click(function () {
+                
+
+            });
+        });
+    </script>
+</body>
+</html>

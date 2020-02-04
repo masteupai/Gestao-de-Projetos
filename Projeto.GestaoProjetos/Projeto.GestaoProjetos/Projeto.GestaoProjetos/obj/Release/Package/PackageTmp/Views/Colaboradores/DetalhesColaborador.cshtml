@@ -1,0 +1,184 @@
+﻿@model Projeto.GestaoProjetos.Models.Colaborador
+@using Projeto.GestaoProjetos.Models
+@{
+    ViewBag.Title = "DetalhesColaborador";
+    var projetos = (List<ProjetosColaborador>)ViewBag.Projetos;
+}
+<div>
+    <div class="col-md-6">
+        <fieldset class="fild-borda">
+            <legend class="fild-borda">Detalhes</legend>
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.IDSKILL)
+                </dt>
+
+                <dd>
+                    @ViewBag.Skill
+                </dd>
+
+                @*<dt>
+                        @Html.DisplayNameFor(model => model.IDCOLABORADOR)
+                    </dt>*@
+
+                @*<dd>
+                        @Html.DisplayFor(model => model.IDCOLABORADOR)
+                    </dd>*@
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Nome)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Nome)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ValorHora)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ValorHora)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Tipo)
+                </dt>
+
+                <dd>
+                    @if (Model.Tipo == 1)
+                    {
+                        <span>CPF</span>
+                    }
+                    else
+                    {
+                        <span>CNPJ</span>
+                    }
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Telefone)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Telefone)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Email)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Email)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Documento)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Documento)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Status)
+                </dt>
+
+                <dd>
+                    @if (Model.Status == 1)
+                    {
+                        <span>Ativo</span>
+                    }
+                    else
+                    {
+                        <span>Inativo</span>
+                    }
+                </dd>
+
+            </dl>
+            <p>
+                @Html.ActionLink("Editar", "AlterarColaborador", new { id = Model.IDCOLABORADOR }, new { @class = "btn btn-info" })
+                @Html.ActionLink("Voltar", "IncluirColaborador", new { }, new { @class = "btn btn-info" })
+                
+            </p>
+        </fieldset>
+    </div>
+    <div class="col-md-6">
+        <fieldset class="fild-borda" style="height:210px;">
+            <legend class="fild-borda">Valores</legend>
+            <div id="resultado">
+                @if (!Request.IsAjaxRequest())
+                {
+                    <span class="alert ">Selecione um Projeto para verificar os valores...</span>
+                }
+            </div>           
+        </fieldset>
+    </div>
+</div>
+
+<div class="modal" id="modal"></div>
+@if (projetos.Count() != 0)
+{
+    <h2 class="text-center"> Lista de Projetos</h2>
+    <br />
+    <table class="table table-bordered tables">
+        <tr>
+            <th>
+                @Html.DisplayName("Projeto:")
+            </th>
+            <th>
+                @Html.DisplayName("Habilidade:")
+            </th>
+            <th>
+                @Html.DisplayName("Nivel:")
+            </th>
+            <th>
+                @Html.DisplayName("Valor Pago no Projeto:")
+            </th>
+            <th>Opções:</th>
+        </tr>
+
+        @foreach (var item in projetos)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Projeto.Descricao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SkillInfo.Descricao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SkillInfo.Nivel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ValorHoraProjColab)
+                </td>
+                <td>
+                    @Html.ActionLink(" ", "MostrarDetalhesProjeto", "Projetos", new { id = item.IDPROJETO }, new { @class = "btn btn-info glyphicon glyphicon-search", style = "color:000; margin:5px;", title = "Detalhes" })
+                    @Html.ActionLink(" ", "PontoColaborador", new { id = item.IDPROJ_COLAB }, new { @class = "btn btn-success glyphicon glyphicon-time", style = "color:000; margin:5px;", title = "Marcar Ponto" })    
+                    <button class="btn btn-primary valores" data-id="@item.IDPROJ_COLAB" >
+                        <i class="glyphicon glyphicon-piggy-bank" title="Mostrar Valores" style="color: #ffb8ee"></i>
+                    </button>
+                </td>
+            </tr>
+        }
+
+    </table>
+}
+else
+{
+    <div class="alert alert-danger text-center col-md-6">
+        <span class="text-center">Este colaborador não está alocado a nenhum projeto...</span>
+    </div>
+}
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $(".valores").click(function () {
+                var id = $(this).attr("data-id");
+                $("#resultado").load("/Colaboradores/DetalhesColaborador/" + id)
+            });
+        });
+    </script>
+    
+    }

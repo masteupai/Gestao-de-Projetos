@@ -1,0 +1,23 @@
+﻿@if (Request.IsAuthenticated)
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Bem vindo, " + User.Identity.Name, "Index", "Home")</li>
+        @if (User.IsInRole("ADMIN"))
+        {
+            <li class="dropdown dropnav dropdown-toggle active">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Cadastrar <span class="caret"></span></a>
+                <ul class="dropdown-menu dropnav">
+                    <li>@Html.ActionLink("Usuario", "CadastroUsuario", "Autenticacao")</li>
+                   <li>@Html.ActionLink("Role", "IncluirRole", "Autenticacao")</li>
+                </ul>
+            </li>
+        }
+        <li>@Html.ActionLink("Logout", "Logout", "Autenticacao")</li>
+    </ul>
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Login", "Login", "Autenticacao")</li>
+    </ul>
+}

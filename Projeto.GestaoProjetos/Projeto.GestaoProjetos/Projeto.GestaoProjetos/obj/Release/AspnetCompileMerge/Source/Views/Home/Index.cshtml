@@ -1,0 +1,70 @@
+﻿
+@{
+    ViewBag.Title = "Home";
+}
+
+<h2 class="text-center col-md-12" style="margin:24px;">Mttechne - Gestão de Projetos</h2>
+<div class="col-md-12">
+    <div class="text-center col-md-12">
+        <p class="col-lg-offset-3" style="max-width:600px; font-size:18px;">
+            Conheça o sistema de Gestão de Projetos - Mttechne, encontre seus caminhos para uma melhor gestão e controle de projetos, você pode conhecer mais abaixo:
+        </p>
+        <br />
+        <button class="btn btn-info" id="btn">
+            Saiba Mais
+        </button>
+    </div>
+
+</div>
+
+<div id="func" hidden>
+    <h3 class="text-center col-md-12" style="margin: 24px;">Funcionalidades do Sistema</h3>
+    <br />
+
+    <div class="col-md-offset-1">
+        <div class="col-md-4 btn1">
+            <img style="max-width:200px; max-height:300px; " src="~/Images/undraw_ideas_s70l.svg" />
+            <p id="p1" hidden>
+                Acompanhe os projetos em andamento.
+                Acompanhe os Gastos e Lucros de cada Projeto.
+
+
+            </p>
+        </div>
+        <div class="col-md-4 btn2">
+            <img style="max-width:200px; max-height:300px;" src="~/Images/undraw_confirm_89ui.svg" />
+            <p id="p2" hidden>
+                Conheça os seus colaboradores, tudo detalhado sobre suas skills e valores!
+                Saiba as atividades realizadas em cada projeto.
+
+            </p>
+        </div>
+        <div class="col-md-4 btn3">
+            <img style="max-width:200px; max-height:300px;" src="~/Images/undraw_dev_productivity_umsq.svg" />
+            <p id="p3" hidden>
+                Crie novos projetos!
+                Acompanhe o andamento de cada um deles,
+                inclua funções a serem realizadas no projetos pelos colaboradores!
+            </p>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $("#btn").click(function () {
+                $("#func").fadeIn("slow");
+            });
+            $(".btn1").click(function () {
+                $("#p1").fadeIn("slow");
+            });
+            $(".btn2").click(function () {
+                $("#p2").fadeIn("slow");
+            });
+            $(".btn3").click(function () {
+                $("#p3").fadeIn("slow");
+            });
+        });
+    </script>
+}

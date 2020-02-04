@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Projeto.GestaoProjetos.Models.Colaborador>
+
+@if (Model == null)
+{
+    <div class="alert alert-warning">
+      Não existem colaboradores neste projeto...
+    </div>
+}
+else
+{
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ValorHora)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IDSKILL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Documento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ValorHora)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IDSKILL)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Documento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+        </tr>
+    }
+</table>
+}
